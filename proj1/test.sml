@@ -13,7 +13,7 @@ struct
     | sc (Cforall(k,c)) = "FA(" ^ sk(k) ^ "." ^ sc(c) ^ ")"
 
   (* prints them backwards for notation used in notes *)
-  fun sctx L = (foldl (fn (x,y) => sk(x) ^ ", " ^ y) "[" L) ^ "]"
+  fun sctx L = "[" ^ (String.concatWith ", " (List.rev L)) ^ "]"
 
   fun runEquivTests L = (print("\n\n----Running equiv Tests ----\n");
       foldl (fn ((ctx,c1,c2,k),n) => (equiv ctx c1 c2 k;
@@ -55,7 +55,8 @@ struct
                     ([], Clam(Ktype, Cforall(Ktype, Cvar(0))), Clam(Ktype, Cforall(Ktype, Cvar(0))),
                      Karrow(Ktype, Ktype))]
 
-  val equivStrTests = [([Ktype],Cvar 0, Cvar 0, Ktype)]
+  val equivStrTests = [([Ktype],Cvar 0, Cvar 0, Ktype),
+                      ([Ktype, Ktype], Cvar 0, Cvar 1, Ktype)]
 
   val _ = runEquivTests equivTests
   val _ = runEquivStrTests equivStrTests
