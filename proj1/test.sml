@@ -55,8 +55,7 @@ struct
                     ([], Clam(Ktype, Cforall(Ktype, Cvar(0))), Clam(Ktype, Cforall(Ktype, Cvar(0))),
                      Karrow(Ktype, Ktype))]
 
-  val equivStrTests = [([Ktype],Cvar 0, Cvar 0, Ktype),
-                      ([Ktype, Ktype], Cvar 0, Cvar 1, Ktype)]
+  val equivStrTests = [([Ktype],Cvar 0, Cvar 0, Ktype)]
 
   val _ = runEquivTests equivTests
   val _ = runEquivStrTests equivStrTests
